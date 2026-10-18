@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b5b43">
+  <title>TF Absen — Absensi Tim</title>
+  <style>
+    :root{--green:#0b5b43;--green2:#147a5b;--mint:#e9f5ef;--ink:#17231e;--muted:#75827b;--line:#e5ebe7;--bg:#f5f8f6;--amber:#a96600;--red:#b34236}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}.top{background:var(--green);color:white;padding:18px max(22px,calc((100vw - 1120px)/2));display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px;font-weight:750;font-size:18px}.logo{width:38px;height:38px;border-radius:12px;background:#ffffff20;display:grid;place-items:center;font-size:20px}.top small{color:#d2e7dd}.wrap{max-width:1120px;margin:28px auto;padding:0 20px}.intro{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px;gap:15px}.intro h1{font-size:27px;letter-spacing:-.5px;margin:0 0 3px}.intro p{color:var(--muted);margin:0}.date{border:1px solid var(--line);background:white;border-radius:12px;padding:10px 14px;color:#45534b;font-weight:600;white-space:nowrap}.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:20px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 3px 12px #143e2810}.card h2{font-size:18px;margin:0 0 4px}.sub{color:var(--muted);font-size:13px;margin:0 0 20px}.field{margin:14px 0}.field label{display:block;font-size:13px;font-weight:650;margin-bottom:6px}.field input{width:100%;border:1px solid #dce5df;border-radius:10px;padding:11px 12px;outline:none}.field input:focus{border-color:var(--green2);box-shadow:0 0 0 3px #147a5b18}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}.btn{border:0;border-radius:10px;padding:11px 16px;cursor:pointer;font-weight:700}.primary{background:var(--green);color:white}.secondary{background:var(--mint);color:var(--green)}.btn:disabled{opacity:.55;cursor:not-allowed}.location{background:#f6f9f7;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;margin:14px 0}.pin{font-size:18px}.location strong{font-size:13px}.location p{margin:2px 0 0;color:var(--muted);font-size:12px}.preview{width:100%;max-height:250px;object-fit:cover;border-radius:12px;margin-top:12px;display:none}.camera-hint{background:#fafcfb;border:1px dashed #cdd9d1;border-radius:12px;padding:17px;text-align:center;color:var(--muted);font-size:13px}.tabs{display:flex;background:#f2f6f3;padding:4px;border-radius:11px;margin:16px 0}.tab{flex:1;border:0;border-radius:8px;background:transparent;padding:9px;cursor:pointer;font-weight:650;color:#65736a}.tab.active{background:white;color:var(--green);box-shadow:0 1px 4px #102c1a12}.statusrow{display:flex;gap:9px;align-items:center;margin:12px 0}.dot{width:9px;height:9px;border-radius:99px;background:#b7c4bc}.dot.ok{background:#21a16e}.dot.warn{background:#df9b32}.records{margin-top:20px}.records-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.records-head h2{margin:0}.linkbtn{border:0;background:none;color:var(--green2);font-weight:700;cursor:pointer}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:540px;font-size:13px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:650;font-size:12px}.pill{display:inline-block;padding:4px 9px;border-radius:99px;background:#e9f5ef;color:#087348;font-weight:700;font-size:11px}.pill.late{background:#fff2df;color:var(--amber)}.pill.missing{background:#f1f3f2;color:#69766e}.empty{text-align:center;color:var(--muted);padding:25px}.note{font-size:12px;color:var(--muted);margin:16px 2px 0}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;background:#173e2e;color:white;padding:12px 17px;border-radius:11px;transition:.2s;pointer-events:none;box-shadow:0 8px 30px #0002}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:760px){.top{padding:14px 18px}.top small{display:none}.wrap{margin:22px auto;padding:0 14px}.intro{align-items:start;flex-direction:column}.intro h1{font-size:24px}.layout{grid-template-columns:1fr}.card{padding:18px}.date{font-size:13px}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="brand"><div class="logo">✓</div><span>TF Absen</span></div><small>Absensi manpower BRI yang bertugas di TF</small></header>
+  <main class="wrap">
+    <section class="intro"><div><h1>Absensi harian</h1><p>Catat kehadiran saat tiba dan selesai bertugas di lokasi.</p></div><div class="date" id="today"></div></section>
+    <div class="layout">
+      <section class="card">
+        <h2>Catat absensi</h2><p class="sub">Isi nama, ambil foto verifikasi, dan kirim absensi.</p>
+        <div class="field"><label for="name">Nama lengkap</label><input id="name" placeholder="Masukkan nama" autocomplete="name"></div>
+        <div class="field"><label for="employee">ID karyawan <span style="font-weight:400;color:#849088">(opsional)</span></label><input id="employee" placeholder="Contoh: BRI-001"></div>
+        <div class="tabs"><button class="tab active" data-kind="Masuk">Absen masuk · 07.00</button><button class="tab" data-kind="Pulang">Absen pulang · 16.00</button></div>
+        <label class="camera-hint" for="photo" style="display:block;cursor:pointer"><span style="font-size:24px">📷</span><br><strong>Ambil foto verifikasi wajah</strong><br>Pilih untuk membuka kamera ponsel</label>
+        <input id="photo" type="file" accept="image/*" capture="user" hidden><img id="preview" class="preview" alt="Pratinjau foto verifikasi">
+        <div class="location"><span class="pin">📍</span><div><strong id="locTitle">Lokasi belum dicatat</strong><p id="locDesc">Izinkan akses lokasi untuk mencatat posisi saat absen.</p></div></div>
+        <div class="actions"><button class="btn secondary" id="locBtn">Catat lokasi</button><button class="btn primary" id="submitBtn">Kirim absensi</button></div>
+        <p class="note">Jam kerja 07.00–16.00. Absensi masuk dan pulang dicatat sebagai acuan rekap manual.</p>
+      </section>
+      <section class="card">
+        <h2>Status hari ini</h2><p class="sub" id="statusDate"></p>
+        <div class="statusrow"><span class="dot" id="inDot"></span><span>Absen masuk</span><strong id="inTime" style="margin-left:auto;color:#69766e">Belum absen</strong></div>
+        <div class="statusrow"><span class="dot" id="outDot"></span><span>Absen pulang</span><strong id="outTime" style="margin-left:auto;color:#69766e">Belum absen</strong></div>
+        <div class="records"><div class="records-head"><h2>Rekap absensi</h2><button class="linkbtn" id="exportBtn">Unduh CSV</button></div>
+          <div class="tablewrap"><table><thead><tr><th>Nama</th><th>Tanggal</th><th>Masuk</th><th>Pulang</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table></div>
+          <div class="empty" id="empty">Belum ada data absensi pada perangkat ini.</div>
+        </div>
+        <p class="note">Prototipe ini menyimpan data hanya di browser/perangkat yang digunakan. Data belum terkirim ke admin atau tersinkron antar pengguna.</p>
+      </section>
+    </div>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script>
+    const $=s=>document.querySelector(s), key='tf-absen-records-v1';let kind='Masuk',coords=null,photoData='';
+    const now=new Date(), dateKey=d=>d.toLocaleDateString('sv-SE'), pretty=d=>d.toLocaleDateString('id-ID',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    $('#today').textContent=pretty(now);$('#statusDate').textContent=pretty(now);
+    document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');kind=b.dataset.kind});
+    function records(){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch{return []}}
+    function notify(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
+    $('#photo').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{photoData=r.result;$('#preview').src=photoData;$('#preview').style.display='block'};r.readAsDataURL(f)};
+    $('#locBtn').onclick=()=>{if(!navigator.geolocation){notify('Perangkat tidak mendukung pencatatan lokasi.');return}$('#locTitle').textContent='Mengambil lokasi…';navigator.geolocation.getCurrentPosition(p=>{coords={lat:p.coords.latitude,lon:p.coords.longitude};$('#locTitle').textContent='Lokasi berhasil dicatat';$('#locDesc').textContent=`${coords.lat.toFixed(5)}, ${coords.lon.toFixed(5)}`},()=>{$('#locTitle').textContent='Lokasi tidak tersedia';$('#locDesc').textContent='Periksa izin lokasi pada browser lalu coba lagi.'},{enableHighAccuracy:true,timeout:12000})};
+    $('#submitBtn').onclick=()=>{const name=$('#name').value.trim();if(!name){notify('Isi nama lengkap terlebih dahulu.');return}if(!photoData){notify('Ambil foto verifikasi wajah terlebih dahulu.');return}const d=dateKey(new Date()), t=new Date(), time=t.toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit',hour12:false});const list=records();let rec=list.find(x=>x.date===d&&x.name.toLowerCase()===name.toLowerCase());if(!rec){rec={name,id:$('#employee').value.trim(),date:d,in:'',out:'',location:null,photoIn:'',photoOut:''};list.unshift(rec)}if(kind==='Masuk'){if(rec.in){notify('Absensi masuk untuk hari ini sudah tersimpan.');return}rec.in=time;rec.photoIn=photoData}else{if(!rec.in){notify('Catat absensi masuk terlebih dahulu.');return}if(rec.out){notify('Absensi pulang untuk hari ini sudah tersimpan.');return}rec.out=time;rec.photoOut=photoData}if(coords)rec.location=coords;localStorage.setItem(key,JSON.stringify(list));photoData='';$('#photo').value='';$('#preview').style.display='none';render();notify(`Absensi ${kind.toLowerCase()} berhasil dicatat.`)};
+    function render(){const list=records(),d=dateKey(new Date()),mine=list.find(x=>x.date===d&&x.name.toLowerCase()===$('#name').value.trim().toLowerCase());$('#inTime').textContent=mine?.in||'Belum absen';$('#outTime').textContent=mine?.out||'Belum absen';$('#inDot').className='dot'+(mine?.in?' ok':'');$('#outDot').className='dot'+(mine?.out?' ok':'');const rows=$('#rows');rows.innerHTML='';for(const x of list){const tr=document.createElement('tr');const status=x.out?'Lengkap':x.in?'Menunggu pulang':'Belum lengkap';tr.innerHTML=`<td>${esc(x.name)}</td><td>${esc(x.date)}</td><td>${esc(x.in||'—')}</td><td>${esc(x.out||'—')}</td><td><span class="pill ${x.in&&!x.out?'late':''}">${status}</span></td>`;rows.append(tr)}$('#empty').style.display=list.length?'none':'block'}
+    function esc(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}$('#name').oninput=render;
+    $('#exportBtn').onclick=()=>{const list=records();if(!list.length){notify('Belum ada data untuk diunduh.');return}const csv=[['Nama','ID Karyawan','Tanggal','Masuk','Pulang','Latitude','Longitude'],...list.map(x=>[x.name,x.id,x.date,x.in,x.out,x.location?.lat??'',x.location?.lon??''])].map(row=>row.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='rekap-absensi-tf.csv';a.click();URL.revokeObjectURL(a.href)};render();
+  </script>
+</body>
+</html>
